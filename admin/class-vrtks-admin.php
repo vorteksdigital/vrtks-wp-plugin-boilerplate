@@ -11,20 +11,6 @@
  */
 
 
-/**
- * Display content for the admin page.
- *
- * @since    1.0.0
- */
-public function display_plugin_admin_page() {
-	?>
-	<div class="wrap">
-		<h1><?php esc_html_e( 'VRTKS Dashboard', 'vrtks' ); ?></h1>
-		<p>Welcome to your custom plugin admin page 🚀</p>
-	</div>
-	<?php
-}
-
 
 /**
  * The admin-specific functionality of the plugin.
@@ -36,97 +22,113 @@ public function display_plugin_admin_page() {
  * @subpackage VRTKS/admin
  * @author     Joshua Davids <joshuadavids.jcd@gmail.com>
  */
-class VRTKS_Admin {
+class VRTKS_Admin
+{
 
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $VRTKS    The ID of this plugin.
-	 */
-	private $VRTKS;
+    /**
+     * The ID of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $VRTKS    The ID of this plugin.
+     */
+    private $VRTKS;
 
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
-	private $version;
+    /**
+     * The version of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $version    The current version of this plugin.
+     */
+    private $version;
 
 
-	public function add_plugin_admin_menu() {
-		add_menu_page(
-			__( 'VRTKS Dashboard', 'vrtks' ),    // Page title
-			__( 'VRTKS', 'vrtks' ),             // Menu title
-			'manage_options',                   // Capability
-			'vrtks',                            // Menu slug
-			array( $this, 'display_plugin_admin_page' ), // Callback
-			'dashicons-admin-generic',          // Icon
-			20                                  // Position
-		);
-	}
+    public function add_plugin_admin_menu()
+    {
+        add_menu_page(
+            __('VRTKS Dashboard', 'vrtks'),    // Page title
+            __('VRTKS', 'vrtks'),             // Menu title
+            'manage_options',                   // Capability
+            'vrtks',                            // Menu slug
+            array($this, 'display_plugin_admin_page'), // Callback
+            'dashicons-admin-generic',          // Icon
+            20                                  // Position
+        );
+    }
+    /**
+     * Display content for the admin page.
+     *
+     * @since    1.0.0
+     */
+    public function display_plugin_admin_page()
+    {
+?>
+        <div class="wrap">
+            <h1><?php esc_html_e('VRTKS Dashboard', 'vrtks'); ?></h1>
+            <p>Welcome to your custom plugin admin page 🚀</p>
+        </div>
+<?php
+    }
 
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @since    1.0.0
-	 * @param      string    $VRTKS       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
-	 */
-	public function __construct( $VRTKS, $version ) {
 
-		$this->VRTKS = $VRTKS;
-		$this->version = $version;
+    /**
+     * Initialize the class and set its properties.
+     *
+     * @since    1.0.0
+     * @param      string    $VRTKS       The name of this plugin.
+     * @param      string    $version    The version of this plugin.
+     */
+    public function __construct($VRTKS, $version)
+    {
 
-	}
+        $this->VRTKS = $VRTKS;
+        $this->version = $version;
+    }
 
-	/**
-	 * Register the stylesheets for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
+    /**
+     * Register the stylesheets for the admin area.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_styles()
+    {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in VRTKS_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The VRTKS_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in VRTKS_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The VRTKS_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
 
-		wp_enqueue_style( $this->VRTKS, plugin_dir_url( __FILE__ ) . 'css/vrtks-admin.css', array(), $this->version, 'all' );
+        wp_enqueue_style($this->VRTKS, plugin_dir_url(__FILE__) . 'css/vrtks-admin.css', array(), $this->version, 'all');
+    }
 
-	}
+    /**
+     * Register the JavaScript for the admin area.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_scripts()
+    {
 
-	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in VRTKS_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The VRTKS_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in VRTKS_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The VRTKS_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script( $this->VRTKS, plugin_dir_url( __FILE__ ) . 'js/vrtks-admin.js', array( 'jquery' ), $this->version, false );
-
-	}
-
+        wp_enqueue_script($this->VRTKS, plugin_dir_url(__FILE__) . 'js/vrtks-admin.js', array('jquery'), $this->version, false);
+    }
 }
