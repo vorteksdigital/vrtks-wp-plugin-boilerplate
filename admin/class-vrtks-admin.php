@@ -10,17 +10,6 @@
  * @subpackage VRTKS/admin
  */
 
-public function add_plugin_admin_menu() {
-	add_menu_page(
-		__( 'VRTKS Dashboard', 'vrtks' ),    // Page title
-		__( 'VRTKS', 'vrtks' ),             // Menu title
-		'manage_options',                   // Capability
-		'vrtks',                            // Menu slug
-		array( $this, 'display_plugin_admin_page' ), // Callback
-		'dashicons-admin-generic',          // Icon
-		20                                  // Position
-	);
-}
 
 /**
  * Display content for the admin page.
@@ -66,6 +55,19 @@ class VRTKS_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+
+
+	public function add_plugin_admin_menu() {
+		add_menu_page(
+			__( 'VRTKS Dashboard', 'vrtks' ),    // Page title
+			__( 'VRTKS', 'vrtks' ),             // Menu title
+			'manage_options',                   // Capability
+			'vrtks',                            // Menu slug
+			array( $this, 'display_plugin_admin_page' ), // Callback
+			'dashicons-admin-generic',          // Icon
+			20                                  // Position
+		);
+	}
 
 	/**
 	 * Initialize the class and set its properties.
