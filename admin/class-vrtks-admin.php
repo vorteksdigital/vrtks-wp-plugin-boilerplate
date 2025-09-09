@@ -10,6 +10,33 @@
  * @subpackage VRTKS/admin
  */
 
+public function add_plugin_admin_menu() {
+	add_menu_page(
+		__( 'VRTKS Dashboard', 'vrtks' ),    // Page title
+		__( 'VRTKS', 'vrtks' ),             // Menu title
+		'manage_options',                   // Capability
+		'vrtks',                            // Menu slug
+		array( $this, 'display_plugin_admin_page' ), // Callback
+		'dashicons-admin-generic',          // Icon
+		20                                  // Position
+	);
+}
+
+/**
+ * Display content for the admin page.
+ *
+ * @since    1.0.0
+ */
+public function display_plugin_admin_page() {
+	?>
+	<div class="wrap">
+		<h1><?php esc_html_e( 'VRTKS Dashboard', 'vrtks' ); ?></h1>
+		<p>Welcome to your custom plugin admin page 🚀</p>
+	</div>
+	<?php
+}
+
+
 /**
  * The admin-specific functionality of the plugin.
  *
